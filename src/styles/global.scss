@@ -19,7 +19,7 @@ svg[data-icon] {
   }
 }
 
-.law {
+.legal {
   counter-reset: item;
 
   li {
@@ -31,7 +31,7 @@ svg[data-icon] {
     content: "(" counters(item, ".") ") ";
     counter-increment: item;
     position: absolute;
-    left: -5rem;
+    left: -3.5rem;
   }
 }
 
