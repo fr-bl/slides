@@ -1,5 +1,5 @@
-@import "../../node_modules/reveal.js/css/theme/template/mixins";
-@import "../../node_modules/reveal.js/css/theme/template/settings";
+@import "../template/mixins";
+@import "../template/settings";
 
 $backgroundColor: #f7f3de;
 
@@ -28,24 +28,4 @@ $overlayElementFgColor: 240, 240, 240;
 
 @include dark-bg-text-color(#fff);
 
-@import "../../node_modules/reveal.js/css/theme/template/theme";
-
-.reveal {
-  a {
-    background-image: linear-gradient(
-      var(--r-selection-background-color),
-      var(--r-selection-background-color)
-    );
-    background-size: 100% 0.1em;
-    background-position-y: 100%;
-    background-position-x: 0%;
-    background-repeat: no-repeat;
-    transition: background-size 0.15s ease-in-out;
-
-    &:hover,
-    &:focus,
-    &:active {
-      background-size: 100% 50%;
-    }
-  }
-}
+@import "../template/theme";

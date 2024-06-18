@@ -1,7 +1,3 @@
-:root {
-  --r-heading-text-transform: normal;
-}
-
 svg[data-icon] {
   vertical-align: middle;
 }
@@ -32,26 +28,5 @@ svg[data-icon] {
     counter-increment: item;
     position: absolute;
     left: -3.5rem;
-  }
-}
-
-.fragment {
-  &.mark,
-  &.mark-current {
-    background-image: linear-gradient(
-      var(--r-selection-background-color),
-      var(--r-selection-background-color)
-    );
-    background-size: 0% 100%;
-    background-position-y: 100%;
-    background-position-x: 100%;
-    background-repeat: no-repeat;
-    transition-property: background-size;
-  }
-
-  &.mark.visible,
-  &.mark-current.current-fragment {
-    background-size: 100% 100%;
-    background-position-x: 0%;
   }
 }

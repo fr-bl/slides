@@ -1,0 +1,23 @@
+@import "reveal.js/css/theme/template/theme";
+
+.reveal {
+  a {
+    background-image: linear-gradient(
+      var(--r-selection-background-color),
+      var(--r-selection-background-color)
+    );
+    background-size: 100% 0.1em;
+    background-position-y: 100%;
+    background-position-x: 0%;
+    background-repeat: no-repeat;
+    transition-duration: 0.15s;
+    transition-property: background-size, color;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-size: 100% 100%;
+      color: var(--r-link-color-hover);
+    }
+  }
+}
