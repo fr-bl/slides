@@ -16,10 +16,6 @@ export default defineConfig({
       masterPicture: "./src/assets/favicon.svg",
     }),
   ],
-  site: "https://fr-bl.github.io/slides",
-  vite: {
-    ssr: {
-      noExternal: ["@fontsource-variable/montserrat"],
-    },
-  },
+  site: "https://fr-bl.github.io",
+  base: "slides",
 });
