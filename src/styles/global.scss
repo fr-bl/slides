@@ -1,3 +1,50 @@
+:root {
+  --r-heading-text-transform: normal;
+}
+
 svg[data-icon] {
   vertical-align: middle;
+}
+
+.contents {
+  counter-reset: item;
+
+  li {
+    display: block;
+  }
+
+  li:before {
+    content: counters(item, ".") ". ";
+    counter-increment: item;
+  }
+}
+
+.law {
+  counter-reset: item;
+
+  li {
+    display: block;
+    position: relative;
+  }
+
+  li::before {
+    content: "(" counters(item, ".") ") ";
+    counter-increment: item;
+    position: absolute;
+    left: -5rem;
+  }
+}
+
+.fragment.mark {
+  background-image: linear-gradient(
+    to right,
+    var(--r-selection-background-color) 50%,
+    transparent 0
+  );
+  background-size: 200% 200%;
+  background-position: right;
+
+  &.current-fragment {
+    background-position: left;
+  }
 }

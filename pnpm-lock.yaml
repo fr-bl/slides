@@ -8,6 +8,9 @@ dependencies:
   '@astrojs/check':
     specifier: ^0.5.10
     version: 0.5.10(prettier-plugin-astro@0.13.0)(prettier@3.3.2)(typescript@5.4.5)
+  '@fontsource/source-sans-pro':
+    specifier: ^5.0.8
+    version: 5.0.8
   '@iconify-json/material-symbols':
     specifier: ^1.1.81
     version: 1.1.82
@@ -662,6 +665,10 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@fontsource/source-sans-pro@5.0.8:
+    resolution: {integrity: sha512-5U2UvIYRkCMozZ388gCE73PEpa2MFgN/0t9O4a1FF7bGT/MIneQWSL1XpWZ8iMVYdh6ntxRf3iFA6slCIuFgkg==}
+    dev: false
 
   /@iconify-json/material-symbols@1.1.82:
     resolution: {integrity: sha512-E67LgMFiAbEVF7rE38ulZU6NeXcPvayFF4hUUqt3g33tWrLsDNqEFTSsPt03l34rH5uGGtHIakTqtBlZ+/hRkw==}

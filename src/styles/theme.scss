@@ -1,0 +1,30 @@
+@import "../../node_modules/reveal.js/css/theme/template/mixins";
+@import "../../node_modules/reveal.js/css/theme/template/settings";
+
+$backgroundColor: #f7f3de;
+
+$mainColor: #222;
+$headingColor: #222;
+
+$mainFontSize: 42px;
+$mainFont: "Source Sans Pro", Helvetica, sans-serif;
+$headingFont: "Source Sans Pro", Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: normal;
+$headingFontWeight: 600;
+$linkColor: rgb(148, 107, 13);
+$linkColorHover: lighten($linkColor, 15%);
+$selectionBackgroundColor: rgb(255, 211, 77);
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1em;
+
+$overlayElementBgColor: 0, 0, 0;
+$overlayElementFgColor: 240, 240, 240;
+
+@include dark-bg-text-color(#fff);
+
+@import "../../node_modules/reveal.js/css/theme/template/theme";

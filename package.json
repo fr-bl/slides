@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
+    "@fontsource/source-sans-pro": "^5.0.8",
     "@iconify-json/material-symbols": "^1.1.81",
     "astro": "^4.9.2",
     "astro-favicons": "^2.0.2",
