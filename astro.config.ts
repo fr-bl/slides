@@ -17,5 +17,5 @@ export default defineConfig({
     }),
   ],
   site: "https://fr-bl.github.io",
-  base: "slides",
+  base: "slides/",
 });
