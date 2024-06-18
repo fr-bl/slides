@@ -1,0 +1,27 @@
+---
+import Slides from "@layouts/Slides.astro";
+---
+
+<Slides title="Gesetzgebung">
+  <section>
+    <section>
+      <p>Wie entsteht ein Gesetz?</p>
+      <h1>Der Gesetzgebungsprozess</h1>
+      <small>
+        <author>Frederick</author>
+        •
+        <time>
+          {new Date().toLocaleDateString("de-DE", { dateStyle: "long" })}
+        </time>
+      </small>
+    </section>
+    <section>
+      <h2>Gliederung</h2>
+      <ol>
+        <li><a href="#2">Einstieg</a></li>
+        <li><a href="#3">Hauptteil</a></li>
+        <li><a href="#4">Fazit</a></li>
+      </ol>
+    </section>
+  </section>
+</Slides>
