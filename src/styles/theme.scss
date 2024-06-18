@@ -30,20 +30,22 @@ $overlayElementFgColor: 240, 240, 240;
 
 @import "../../node_modules/reveal.js/css/theme/template/theme";
 
-.reveal a {
-  background-image: linear-gradient(
-    $selectionBackgroundColor,
-    $selectionBackgroundColor
-  );
-  background-size: 100% 0.1em;
-  background-position-y: 100%;
-  background-position-x: 0%;
-  background-repeat: no-repeat;
-  transition: background-size 0.15s ease-in-out;
+.reveal {
+  a {
+    background-image: linear-gradient(
+      var(--r-selection-background-color),
+      var(--r-selection-background-color)
+    );
+    background-size: 100% 0.1em;
+    background-position-y: 100%;
+    background-position-x: 0%;
+    background-repeat: no-repeat;
+    transition: background-size 0.15s ease-in-out;
 
-  &:hover,
-  &:focus,
-  &:active {
-    background-size: 100% 100%;
+    &:hover,
+    &:focus,
+    &:active {
+      background-size: 100% 50%;
+    }
   }
 }
