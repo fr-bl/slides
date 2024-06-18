@@ -35,16 +35,23 @@ svg[data-icon] {
   }
 }
 
-.fragment.mark {
-  background-image: linear-gradient(
-    to right,
-    var(--r-selection-background-color) 50%,
-    transparent 0
-  );
-  background-size: 200% 200%;
-  background-position: right;
+.fragment {
+  &.mark,
+  &.mark-current {
+    background-image: linear-gradient(
+      var(--r-selection-background-color),
+      var(--r-selection-background-color)
+    );
+    background-size: 0% 100%;
+    background-position-y: 100%;
+    background-position-x: 100%;
+    background-repeat: no-repeat;
+    transition-property: background-size;
+  }
 
-  &.current-fragment {
-    background-position: left;
+  &.mark.visible,
+  &.mark-current.current-fragment {
+    background-size: 100% 100%;
+    background-position-x: 0%;
   }
 }
