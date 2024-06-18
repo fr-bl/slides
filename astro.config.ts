@@ -16,6 +16,5 @@ export default defineConfig({
       masterPicture: "./src/assets/favicon.svg",
     }),
   ],
-  site: "https://fr-bl.github.io",
-  base: "slides/",
+  site: "https://slides.blaes.ing",
 });
