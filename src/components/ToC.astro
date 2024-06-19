@@ -12,9 +12,11 @@
 
   Reveal.on("ready", () => {
     const slides = Reveal.getSlides();
-    const chapters = slides.map(getChapter).filter((c) => c !== undefined);
+    const chapters = slides
+      .map(getChapter)
+      .filter((c) => c !== undefined) as Chapter[];
 
-    for (const { url, title } of chapters) {
+    for (const { title, url } of chapters) {
       const anchor = document.createElement("a");
       anchor.innerText = title;
       anchor.href = url;
@@ -40,7 +42,14 @@
     return false;
   }
 
-  function getChapter(slide: HTMLElement) {
+  function getParentSlide(element: HTMLElement) {
+    while (element.parentElement) {
+      if (element.tagName === "SECTION") return element;
+      element = element.parentElement;
+    }
+  }
+
+  function getChapter(slide: HTMLElement): Chapter | undefined {
     const selection = slide.querySelectorAll<HTMLHeadingElement>("h1, h2");
     const headers = [...selection].filter((h) => !isIgnored(h) && h.innerText);
     const [header] = headers.sort((a, b) => a.tagName.localeCompare(b.tagName));
@@ -54,10 +63,13 @@
     };
   }
 
-  function getParentSlide(element: HTMLElement) {
-    while (element.parentElement) {
-      if (element.tagName === "SECTION") return element;
-      element = element.parentElement;
-    }
+  interface Chapter {
+    indices: {
+      h: number;
+      v: number;
+      f: number;
+    };
+    url: string;
+    title: string;
   }
 </script>
