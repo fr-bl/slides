@@ -2,6 +2,10 @@
 import Slides from "@layouts/Slides.astro";
 import TOC from "@components/TOC.astro";
 import Source from "@components/Source.astro";
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString("de-DE", { dateStyle: "long" });
+}
 ---
 
 <Slides title="Gesetzgebung">
@@ -13,7 +17,7 @@ import Source from "@components/Source.astro";
         <author>Frederick</author>
         •
         <time>
-          {new Date().toLocaleDateString("de-DE", { dateStyle: "long" })}
+          {formatDate(new Date())}
         </time>
       </small>
     </section>
@@ -66,6 +70,7 @@ import Source from "@components/Source.astro";
     <section data-toc-ignore>
       <h2>Quellen</h2>
       <ul style="list-style: none;">
+        <li>deutsches Grundgesetz</li>
         <li>
           <Source
             url="https://bundestag.de/parlament/aufgaben/gesetzgebung_neu/gesetzgebung"
@@ -91,17 +96,13 @@ import Source from "@components/Source.astro";
             url="https://de.wikipedia.org/wiki/Gesetzgebungsverfahren_(Deutschland)"
           />
         </li>
-        <li>deutsches Grundgesetz</li>
       </ul>
-      <small
-        >Stand <time
-          >{
-            new Date("15 Jun 2024").toLocaleDateString("de-DE", {
-              dateStyle: "long",
-            })
-          }</time
-        ></small
-      >
+      <small>
+        Stand
+        <time>
+          {formatDate(new Date("15 Jun 2024"))}
+        </time>
+      </small>
     </section>
   </section>
 </Slides>
