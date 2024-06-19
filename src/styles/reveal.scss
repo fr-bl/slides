@@ -35,4 +35,8 @@
   .slide-number {
     user-select: none;
   }
+
+  .slide-background-content {
+    filter: blur(8px);
+  }
 }
