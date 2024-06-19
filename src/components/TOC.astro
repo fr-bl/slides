@@ -2,28 +2,35 @@
 
 ---
 
-<ol class="toc"></ol>
+<ol id="toc"></ol>
 
 <script>
   import Reveal from "reveal.js";
 
-  const tocs = document.querySelectorAll(".toc");
+  const toc = document.querySelector("#toc") as HTMLOListElement;
+  const slide = getParentSlide(toc);
 
   Reveal.on("ready", () => {
     const slides = Reveal.getSlides();
     const chapters = slides.map(getChapter).filter((c) => c !== undefined);
 
-    for (const toc of tocs) {
-      for (const { url, title } of chapters) {
-        const anchor = document.createElement("a");
-        anchor.innerText = title;
-        anchor.href = url;
-        const item = document.createElement("li");
-        item.append(anchor);
-        toc.append(item);
-      }
+    for (const { url, title } of chapters) {
+      const anchor = document.createElement("a");
+      anchor.innerText = title;
+      anchor.href = url;
+      const item = document.createElement("li");
+      item.append(anchor);
+      toc.append(item);
     }
   });
+
+  Reveal.addKeyBinding(
+    { key: "I", keyCode: 73, description: "Show the Table of Contents" },
+    () => {
+      const { h, v } = Reveal.getIndices(slide);
+      Reveal.slide(h, v);
+    },
+  );
 
   function isIgnored(element: HTMLElement) {
     while (element.parentElement) {
@@ -45,5 +52,12 @@
       url: `#/${indices.h}/${indices.v ?? ""}`,
       title: header.innerText,
     };
+  }
+
+  function getParentSlide(element: HTMLElement) {
+    while (element.parentElement) {
+      if (element.tagName === "SECTION") return element;
+      element = element.parentElement;
+    }
   }
 </script>
