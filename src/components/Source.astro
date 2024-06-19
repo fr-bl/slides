@@ -5,15 +5,29 @@ interface Props {
 
 const { url: href } = Astro.props;
 const url = new URL(href);
+const path = url.pathname.split("/");
+const directory = path.slice(0, -1).join("/") + "/";
+const leaf = path.at(-1);
 ---
 
-<a href={url.href} target="_blank"
-  >{url.hostname}<span class="path">{url.pathname}</span></a
->
+<a href={url.href} target="_blank">
+  <slot>
+    {url.hostname}
+    <span class="path">
+      <span class="dir">{directory}</span><span class="leaf">{leaf}</span>
+    </span>
+  </slot>
+</a>
 
-<style>
+<style lang="scss">
   .path {
-    opacity: 0.8;
     font-size: 0.5em;
+
+    .dir {
+      opacity: 0.8;
+    }
+    .leaf {
+      font-weight: bold;
+    }
   }
 </style>
