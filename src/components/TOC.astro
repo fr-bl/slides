@@ -11,26 +11,43 @@
 
   await Reveal.initialize();
 
-  const slides = Reveal.getHorizontalSlides();
-  const headers = slides.map((slide) => {
-    if (slide.hasAttribute("data-toc-ignore")) return undefined;
-    const selection = slide.querySelectorAll<HTMLHeadingElement>("h1, h2");
-    const headers = [...selection].filter(
-      (h) => !h.hasAttribute("data-toc-ignore"),
-    );
-    const [header] = headers.sort((a, b) => a.tagName.localeCompare(b.tagName));
-    return header;
-  });
+  const slides = Reveal.getSlides();
+  const chapters = slides
+    .map((slide) => {
+      const selection = slide.querySelectorAll<HTMLHeadingElement>("h1, h2");
+      const headers = [...selection].filter(
+        (h) => !isIgnored(h) && h.innerText,
+      );
+      const [header] = headers.sort((a, b) =>
+        a.tagName.localeCompare(b.tagName),
+      );
+      if (header === undefined) return undefined;
+
+      const indices = Reveal.getIndices(slide);
+      return {
+        indices,
+        url: `#/${indices.h}/${indices.v ?? ""}`,
+        title: header.innerText,
+      };
+    })
+    .filter((c) => c !== undefined);
 
   for (const toc of tocs) {
-    for (const [i, header] of headers.entries()) {
-      if (!header) continue;
+    for (const { url, title } of chapters) {
       const anchor = document.createElement("a");
-      anchor.innerText = header.innerText;
-      anchor.href = `#/${i}`;
+      anchor.innerText = title;
+      anchor.href = url;
       const item = document.createElement("li");
       item.append(anchor);
       toc.append(item);
     }
+  }
+
+  function isIgnored(element: HTMLElement) {
+    while (element.parentElement) {
+      if (element.hasAttribute("data-toc-ignore")) return true;
+      element = element.parentElement;
+    }
+    return false;
   }
 </script>
