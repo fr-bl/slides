@@ -1,9 +1,10 @@
 ---
 import Slides from "@layouts/Slides.astro";
+import TOC from "@components/TOC.astro";
 ---
 
 <Slides title="Gesetzgebung">
-  <section>
+  <section data-toc-ignore>
     <section>
       <p>Wie entsteht ein Gesetz?</p>
       <h1>Der Gesetzgebungs&shy;prozess</h1>
@@ -17,11 +18,7 @@ import Slides from "@layouts/Slides.astro";
     </section>
     <section>
       <h2>Gliederung</h2>
-      <ol>
-        <li><a href="#1">Einstieg</a></li>
-        <li><a href="#2">Phasen der Gesetzgebung</a></li>
-        <li><a href="#3">Fazit</a></li>
-      </ol>
+      <TOC />
     </section>
   </section>
 
@@ -60,7 +57,7 @@ import Slides from "@layouts/Slides.astro";
   <section>
     <h2>Fazit</h2>
   </section>
-  <section>
+  <section data-toc-ignore>
     <section>
       <h2>Danke für eure Aufmerksamkeit!</h2>
     </section>

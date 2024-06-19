@@ -1,0 +1,36 @@
+---
+
+---
+
+<ol class="toc"></ol>
+
+<script>
+  import Reveal from "reveal.js";
+
+  const tocs = document.querySelectorAll(".toc");
+
+  await Reveal.initialize();
+
+  const slides = Reveal.getHorizontalSlides();
+  const headers = slides.map((slide) => {
+    if (slide.hasAttribute("data-toc-ignore")) return undefined;
+    const selection = slide.querySelectorAll<HTMLHeadingElement>("h1, h2");
+    const headers = [...selection].filter(
+      (h) => !h.hasAttribute("data-toc-ignore"),
+    );
+    const [header] = headers.sort((a, b) => a.tagName.localeCompare(b.tagName));
+    return header;
+  });
+
+  for (const toc of tocs) {
+    for (const [i, header] of headers.entries()) {
+      if (!header) continue;
+      const anchor = document.createElement("a");
+      anchor.innerText = header.innerText;
+      anchor.href = `#/${i}`;
+      const item = document.createElement("li");
+      item.append(anchor);
+      toc.append(item);
+    }
+  }
+</script>
