@@ -1,6 +1,7 @@
 ---
 import Slides from "@layouts/Slides.astro";
 import TOC from "@components/TOC.astro";
+import Source from "@components/Source.astro";
 ---
 
 <Slides title="Gesetzgebung">
@@ -66,13 +67,35 @@ import TOC from "@components/TOC.astro";
       <h2>Quellen</h2>
       <ul>
         <li>
-          <a
-            href="https://bundestag.de/parlament/aufgaben/gesetzgebung_neu/gesetzgebung"
-          >
-            bundestag.de/parlament/aufgaben/gesetzgebung_neu/gesetzgebung
-          </a>
+          <Source
+            url="https://bundestag.de/parlament/aufgaben/gesetzgebung_neu/gesetzgebung"
+          />
+        </li>
+        <li>
+          <Source
+            url="https://bpb.de/kurz-knapp/lexika/politiklexikon/17561/gesetzgebungsprozess"
+          />
+        </li>
+        <li>
+          <Source
+            url="https://bpb.de/themen/politisches-system/deutsche-demokratie/39351/ein-gesetz-entsteht"
+          />
+        </li>
+        <li>
+          <Source
+            url="https://bmj.de/DE/rechtsstaat_kompakt/entstehung_gesetz/gesetzgebung/gesetzgebung_artikel"
+          />
         </li>
       </ul>
+      <small
+        >Jeweils zuletzt geprüft am <time
+          >{
+            new Date("15 Jun 2024").toLocaleDateString("de-DE", {
+              dateStyle: "long",
+            })
+          }</time
+        ></small
+      >
     </section>
   </section>
 </Slides>
