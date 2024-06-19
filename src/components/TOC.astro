@@ -9,39 +9,21 @@
 
   const tocs = document.querySelectorAll(".toc");
 
-  await Reveal.initialize();
+  Reveal.on("ready", () => {
+    const slides = Reveal.getSlides();
+    const chapters = slides.map(getChapter).filter((c) => c !== undefined);
 
-  const slides = Reveal.getSlides();
-  const chapters = slides
-    .map((slide) => {
-      const selection = slide.querySelectorAll<HTMLHeadingElement>("h1, h2");
-      const headers = [...selection].filter(
-        (h) => !isIgnored(h) && h.innerText,
-      );
-      const [header] = headers.sort((a, b) =>
-        a.tagName.localeCompare(b.tagName),
-      );
-      if (header === undefined) return undefined;
-
-      const indices = Reveal.getIndices(slide);
-      return {
-        indices,
-        url: `#/${indices.h}/${indices.v ?? ""}`,
-        title: header.innerText,
-      };
-    })
-    .filter((c) => c !== undefined);
-
-  for (const toc of tocs) {
-    for (const { url, title } of chapters) {
-      const anchor = document.createElement("a");
-      anchor.innerText = title;
-      anchor.href = url;
-      const item = document.createElement("li");
-      item.append(anchor);
-      toc.append(item);
+    for (const toc of tocs) {
+      for (const { url, title } of chapters) {
+        const anchor = document.createElement("a");
+        anchor.innerText = title;
+        anchor.href = url;
+        const item = document.createElement("li");
+        item.append(anchor);
+        toc.append(item);
+      }
     }
-  }
+  });
 
   function isIgnored(element: HTMLElement) {
     while (element.parentElement) {
@@ -49,5 +31,19 @@
       element = element.parentElement;
     }
     return false;
+  }
+
+  function getChapter(slide: HTMLElement) {
+    const selection = slide.querySelectorAll<HTMLHeadingElement>("h1, h2");
+    const headers = [...selection].filter((h) => !isIgnored(h) && h.innerText);
+    const [header] = headers.sort((a, b) => a.tagName.localeCompare(b.tagName));
+    if (header === undefined) return undefined;
+
+    const indices = Reveal.getIndices(slide);
+    return {
+      indices,
+      url: `#/${indices.h}/${indices.v ?? ""}`,
+      title: header.innerText,
+    };
   }
 </script>
