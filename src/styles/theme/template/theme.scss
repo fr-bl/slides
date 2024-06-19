@@ -16,7 +16,7 @@
     &:hover,
     &:focus,
     &:active {
-      background-size: 100% 100%;
+      background-size: 100% $linkUnderlineHeightHover;
       color: var(--r-link-color-hover);
     }
   }
