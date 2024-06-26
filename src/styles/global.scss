@@ -2,31 +2,9 @@ svg[data-icon] {
   vertical-align: middle;
 }
 
-.contents {
-  counter-reset: item;
-
-  li {
-    display: block;
-  }
-
-  li:before {
-    content: counters(item, ".") ". ";
-    counter-increment: item;
-  }
-}
-
-.legal {
-  counter-reset: item;
-
-  li {
-    display: block;
-    position: relative;
-  }
-
-  li::before {
-    content: "(" counters(item, ".") ") ";
-    counter-increment: item;
-    position: absolute;
-    left: -3.5rem;
-  }
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 1em;
 }

@@ -1,54 +1,38 @@
 ---
+import Layout, { type Props as LayoutProps } from "@layouts/Layout.astro";
 import "@fontsource/source-sans-pro";
 import "highlight.js/styles/base16/one-light.css";
 import "@styles/reveal.scss";
 import "@styles/global.scss";
 import "@styles/theme/source/light.scss";
 
-interface Props {
-  title: string;
-  description?: string;
-}
-
-const { title, description } = Astro.props;
+interface Props extends LayoutProps {}
 ---
 
-<!doctype html>
-<html>
-  <head>
-    <title>{title}</title>
-    <meta name="title" content={title} />
-    <meta name="description" content={description} />
-
-    <meta charset="utf-8" />
-    <meta name="locale" content="de_DE" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <slot />
-      </div>
+<Layout {...Astro.props}>
+  <div class="reveal">
+    <div class="slides">
+      <slot />
     </div>
-    <script>
-      import Reveal from "reveal.js";
-      import Highlight from "reveal.js/plugin/highlight/highlight.esm";
-      import Markdown from "reveal.js/plugin/markdown/markdown.esm";
-      import Search from "reveal.js/plugin/search/search.esm";
-      import Notes from "reveal.js/plugin/notes/notes.esm";
-      import Math from "reveal.js/plugin/math/math.esm";
-      import Zoom from "reveal.js/plugin/zoom/zoom.esm";
+  </div>
+</Layout>
 
-      Reveal.initialize({
-        controlsTutorial: false,
-        slideNumber: "c/t",
-        hash: true,
-        history: true,
-        hideCursorTime: 2000,
-        pdfSeparateFragments: false,
-        plugins: [Highlight, Markdown, Search, Notes, Math, Zoom],
-      });
-    </script>
-  </body>
-</html>
+<script>
+  import Reveal from "reveal.js";
+  import Highlight from "reveal.js/plugin/highlight/highlight.esm";
+  import Markdown from "reveal.js/plugin/markdown/markdown.esm";
+  import Search from "reveal.js/plugin/search/search.esm";
+  import Notes from "reveal.js/plugin/notes/notes.esm";
+  import Math from "reveal.js/plugin/math/math.esm";
+  import Zoom from "reveal.js/plugin/zoom/zoom.esm";
+
+  Reveal.initialize({
+    controlsTutorial: false,
+    slideNumber: "c/t",
+    hash: true,
+    history: true,
+    hideCursorTime: 2000,
+    pdfSeparateFragments: false,
+    plugins: [Highlight, Markdown, Search, Notes, Math, Zoom],
+  });
+</script>

@@ -2,47 +2,50 @@
 import Slides from "@layouts/Slides.astro";
 import ToC from "@components/ToC.astro";
 import Source from "@components/Source.astro";
-
-function formatDate(date: Date) {
+export function formatDate(date: Date) {
   return date.toLocaleDateString("de-DE", { dateStyle: "long" });
 }
+
+const images = {
+  tankstelle: "https://zdf.de/assets/co2-abgabe-anstieg-januar-tn-100~768x432",
+  krankenkasse:
+    "https://zdf.de/assets/23-dpa99-u30-08-halbzeit-klausur-des-bundeskabinetts---digitalisierung-100~768x432",
+  smartphone:
+    "https://cdn.takeflyte.com/uploads/2019/04/23080120/Smartphones_Panoramic.jpg",
+  gesetze: "https://anwalt.org/wp-content/uploads/deutsche-gesetze.jpg",
+
+  grundgesetz:
+    "https://assets.deutschlandfunk.de/FILE_ff206fa2635dd038b75eecab0ad7a578/1920x1080.jpg",
+
+  bundesregierung:
+    "https://bundesregierung.de/resource/image/1688942/16x9/1023/575/78b2647a34fbcc8056007153c74797aa/yv/2019-11-06-kabinett-gruppenbild.jpg",
+  bundestag:
+    "https://daserste.de/information/nachrichten-wetter/bundestag-live/sendung/bundestag-138~_v-facebook1200_a8f0c4.jpg",
+  bundesrat:
+    "https://bundesrat.de/SharedDocs/bilder/bereichsseiten/bundesrat.jpg?__blob=normal",
+  fachausschuss: "https://uwe-dorendorf.de/image/inhalte/typ5_344_2.jpg",
+  vermittlungsausschuss:
+    "https://vermittlungsausschuss.de/SharedDocs/VA/panorama-startseite-VA.jpg?__blob=normal",
+  bundespraesident:
+    "https://assets.deutschlandfunk.de/076c6582-56fa-4435-a7e8-a09ca342a598/1920x1080.jpg",
+};
 ---
 
-<Slides title="Gesetzgebung">
+<Slides title="Das Gesetzgebungsverfahren">
   <section data-toc-ignore>
-    <section
-      data-background-image="https://www.zdf.de/assets/co2-abgabe-anstieg-januar-tn-100~768x432"
-    >
-      <aside class="notes">
-        <li>Rezepte direkt auf der Krankenkassenkarte</li>
-        <li>Handyverträge innerhalb eines Monats kündigen</li>
-        <li>Höheren Mindestlohn</li>
-        <br />
-        <li>Gesetze Anfang diesen Jahres</li>
-				<li>Letztes Jahr 107 Gesetze</li>
-      </aside>
-    </section>
-    <section
-      data-background-image="https://www.zdf.de/assets/23-dpa99-u30-08-halbzeit-klausur-des-bundeskabinetts---digitalisierung-100~768x432"
-    >
-    </section>
-    <section
-      data-background-image="https://cdn.takeflyte.com/uploads/2019/04/23080120/Smartphones_Panoramic.jpg"
-    >
-    </section>
-    <section
-      data-background-image="https://www.anwalt.org/wp-content/uploads/deutsche-gesetze.jpg"
-			>
-    </section>
+    <section data-background-image={images.tankstelle}></section>
+    <section data-background-image={images.krankenkasse}></section>
+    <section data-background-image={images.smartphone}></section>
+    <section data-background-image={images.gesetze}></section>
   </section>
   <section data-toc-ignore>
     <p>Wie entsteht ein Gesetz?</p>
     <h1>Der Gesetzgebungs&shy;prozess</h1>
-      <author>Frederick</author>
-      •
-      <time>
-        {formatDate(new Date())}
-      </time>
+    <author>Frederick</author>
+    •
+    <time>
+      {formatDate(new Date("26 Jun 2024"))}
+    </time>
   </section>
   <section data-toc-ignore>
     <h2>Gliederung</h2>
@@ -54,16 +57,103 @@ function formatDate(date: Date) {
       <h2>Allgemeines</h2>
     </section>
     <section>
-      <h3>Regelungen</h3>
+      <h3>Anforderungen</h3>
       <ul>
-        <li>Grundgesetz Artikel 70 &ndash; 82</li>
-        <li>Geschäftsordnungen beteiligter Verfassungsorgane</li>
+        <li>Demokratisch</li>
+        <li>Föderalistisch</li>
+        <li>Offen</li>
       </ul>
+    </section>
+    <section>
+      <div class="columns">
+        <div>
+          <h3>Gesetzliche Regelungen</h3>
+          <ul>
+            <li>Grundgesetz Artikel 70 &ndash; 82</li>
+            <li>Geschäftsordnungen beteiligter Verfassungsorgane</li>
+          </ul>
+        </div>
+        <img src={images.grundgesetz} />
+      </div>
+    </section>
+  </section>
+  <section>
+    <section>
+      <h2>Akteure</h2>
+      <ul>
+        <li>Bundesregierung</li>
+        <li>Bundestag</li>
+        <li>Bundesrat</li>
+        <li>Fachausschüsse</li>
+        <li>Vermittlungsausschuss</li>
+        <li>Bundespräsident</li>
+      </ul>
+    </section>
+    <section>
+      <div class="columns">
+        <div>
+          <h3>Bundesregierung</h3>
+          <ul></ul>
+        </div>
+        <img src={images.bundesregierung} />
+      </div>
+    </section>
+    <section>
+      <div class="columns">
+        <div>
+          <h3>Bundestag</h3>
+          <ul><li>Vertretung des Bundes</li></ul>
+        </div>
+        <img src={images.bundestag} />
+      </div>
+    </section>
+    <section>
+      <div class="columns">
+        <div>
+          <h3>Bundesrat</h3>
+          <ul><li>Vertretung der Länder</li></ul>
+        </div>
+        <img src={images.bundesrat} />
+      </div>
+    </section>
+    <section>
+      <div class="columns">
+        <div>
+          <h3>Fachausschüsse</h3>
+          <ul><li>Expertengruppen zu Themenfeldern</li></ul>
+        </div>
+        <img src={images.fachausschuss} />
+      </div>
+    </section>
+    <section>
+      <div class="columns">
+        <div>
+          <h3>Vermittlungs&shy;ausschuss</h3>
+          <ul><li>Vermittlung zwischen Bund & Ländern</li></ul>
+        </div>
+        <img src={images.vermittlungsausschuss} />
+      </div>
+    </section>
+    <section>
+      <div class="columns">
+        <div>
+          <h3>Bundespräsident</h3>
+          <ul><li>unterzeichnet das Gesetz</li></ul>
+        </div>
+        <img src={images.bundespraesident} />
+      </div>
     </section>
   </section>
   <section>
     <section>
       <h2>Phasen der Gesetzgebung</h2>
+      <ol>
+        <li>Initiative</li>
+        <li>Beratung</li>
+        <li>Abstimmung</li>
+        <li>Beschluss</li>
+        <li>Veröffentlichung</li>
+      </ol>
     </section>
     <section>
       <h3>Initiative</h3>
@@ -78,7 +168,7 @@ function formatDate(date: Date) {
     <section>
       <h3>Beratung des Bundestages</h3>
       <ul>
-        <li>Enbringen des Gesetzesentwurfs</li>
+        <li>Einbringen des Gesetzesentwurfs</li>
         <li>Bundestag hält 3 Lesungen ab</li>
       </ul>
     </section>
@@ -125,7 +215,7 @@ function formatDate(date: Date) {
       </ul>
     </section>
     <section>
-      <h3>Fassung des entgültigen Beschlusses</h3>
+      <h3>Entgültiger Beschluss</h3>
       <ul>
         <li>bei Übereinstimmung kommt das Gesetz zustande</li>
         <li>sonst Einberufung des Vermittlungsausschusses</li>
@@ -147,21 +237,24 @@ function formatDate(date: Date) {
   </section>
   <section>
     <h2>Fazit</h2>
+    <ul>
+      <li>Komplexes Verfahren</li>
+      <li>Erfüllt seine Anforderungen</li>
+    </ul>
   </section>
   <section data-toc-ignore>
     <h2>Danke für eure Aufmerksamkeit!</h2>
-    Fragen?
   </section>
   <section>
     <section data-toc-ignore>
       <h2>Quellen</h2>
-        Stand
-        <time>
-          {formatDate(new Date("15 Jun 2024"))}
-        </time>
+      Stand
+      <time>
+        {formatDate(new Date("15 Jun 2024"))}
+      </time>
     </section>
     <section>
-      <h3>Statistiken</h3>
+      <h3>Einleitung</h3>
       <ul>
         <li>
           <Source
@@ -176,7 +269,7 @@ function formatDate(date: Date) {
       </ul>
     </section>
     <section>
-      <h3>Informationen</h3>
+      <h3>Hauptteil</h3>
       <ul style="list-style: none;">
         <li>
           <Source
@@ -213,15 +306,34 @@ function formatDate(date: Date) {
       </ul>
     </section>
     <section>
-      <h3>Lernvideos</h3>
+      <h3>Erklärvideos auf YouTube</h3>
       <ul style="list-style: none;">
         <li>
-          <Source url="https://youtu.be/xjQtFsUCpGc">bpb: Wie ensteht ein Gesetz?</Source>
+          <Source url="https://youtu.be/xjQtFsUCpGc"
+            >bpb: Wie ensteht ein Gesetz?</Source
+          >
         </li>
         <li>
-          <Source url="https://youtu.be/GD-D6ii9Q50">Deutscher Bundestag: Die Gesetzgebung</Source>
+          <Source url="https://youtu.be/GD-D6ii9Q50"
+            >Deutscher Bundestag: Die Gesetzgebung</Source
+          >
         </li>
       </ul>
     </section>
+    <section>
+      <h3>Bildquellen</h3>
+      <ul style="list-style: none;">
+        {
+          Object.values(images).map((url) => (
+            <li>
+              <Source small url={url} />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </section>
+  <section data-toc-ignore>
+    <h2>Fragen?</h2>
   </section>
 </Slides>

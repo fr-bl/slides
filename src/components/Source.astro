@@ -1,18 +1,21 @@
 ---
 interface Props {
   url: string | URL;
+  small?: boolean;
 }
 
-const { url: href } = Astro.props;
+const { url: href, small = false } = Astro.props;
 const url = new URL(href);
 const path = url.pathname.split("/");
 const directory = path.slice(0, -1).join("/") + "/";
 const leaf = path.at(-1);
 ---
 
-<a href={url.href} target="_blank">
+<a class:list={["source", { small }]} href={url.href} target="_blank">
   <slot>
-    {url.hostname}
+    <span class="hostname">
+      {url.hostname}
+    </span>
     <span class="path">
       <span class="dir">{directory}</span><span class="leaf">{leaf}</span>
     </span>
@@ -20,6 +23,10 @@ const leaf = path.at(-1);
 </a>
 
 <style lang="scss">
+  .small .hostname {
+    font-size: 0.5em;
+    font-weight: bold;
+  }
   .path {
     font-size: 0.5em;
 
