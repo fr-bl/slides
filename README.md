@@ -5,5 +5,5 @@
 
 Meine eigenen Präsentationen.
 
-> ![WARNING]
+> [!WARNING]
 > Die Folien sind nun Teil meines Portfolios auf https://frederick.blaes.ing/folien.
